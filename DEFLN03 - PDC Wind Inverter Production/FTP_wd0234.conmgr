@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="FTP_wd0234"
+  DTS:DTSID="{41E838DD-BE86-404F-83AE-9DB84953AC2C}"
+  DTS:CreationName="FTP">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="wd0234:21">
+      <DTS:FtpConnection
+        DTS:ServerName="wd0234"
+        DTS:ServerUserName="psap2flb"
+        DTS:ChunkSize="10"
+        DTS:Retries="3"
+        DTS:UsePassiveMode="True">
+        <DTS:Property
+          DTS:Name="ServerPassword"
+          Sensitive="1"></DTS:Property>
+      </DTS:FtpConnection>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,1413 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/20/2017 8:25:27 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC0163980"
+  DTS:CreatorName="DANFOSS\A119097"
+  DTS:DTSID="{B63107B2-1E6E-4AB2-98F2-CF7BECE196CC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.30"
+  DTS:LocaleID="1051"
+  DTS:ObjectName="PDC-FH21 TECO to PDC  SAP to PDC"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{EACFF058-02A6-4A22-9730-166E47D554B3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{00AB379A-D687-4185-ABD3-6DA326417CF1}"
+      DTS:ObjectName="FH21_Prefix">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">FH21</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{927425F3-8B61-43E3-9589-33F595323FD2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorTextForMail">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9337D403-AC23-4354-94B0-89C242BC98BE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="UtilityArguments">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\PDC-FH21"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F21BEC5A-8145-4E0E-BBBC-E54075A8E597}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PDC-FH21">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{F7269010-E1E5-4F4F-8BFF-5CB2046E2A23}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="ProductionOrder">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PDC-FH21\Production Order Loop"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Loop over each Production Order"
+          DTS:DTSID="{F1D521CC-C678-4A7D-AFF1-12FE36DEC77C}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Production Order Loop">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{E480042B-9861-47B0-9396-7134C4DCE601}"
+            DTS:ObjectName="{E480042B-9861-47B0-9396-7134C4DCE601}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::ProductionOrder" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{A306DE0F-684F-4A41-AD81-5F09D8D041DE}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="DocNum">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{F557D96A-E8E8-45DD-90B9-CEFE31726F0E}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="ErrorNo">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8F0CB921-6BBD-4A3D-B549-661310B409D0}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="ErrorText">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{901A474B-427F-4922-8D06-E180FBD69732}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="H01_ProductionOrderNo">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{5AB1C6D0-CF61-42A1-A009-5D23F3E1BE2E}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="H01_RecTimeStamp">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{77DBDB5C-FE24-4FBE-8B34-5FF61B02A408}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="H01_RecTimeStamp_DateTime">
+              <DTS:VariableValue
+                DTS:DataType="7">9/20/2017 8:34:29 AM</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8958D441-9AB8-4B80-AFC2-0B162C665F3C}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="H01_TecoMark">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{66B2845B-E044-4487-8048-EA7712E313BC}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="Header01">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{48D79F50-9E5D-40C6-A17F-0329F07A663F}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="PDC_FileName">
+              <DTS:VariableValue
+                DTS:DataType="8">FileName</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{183CDF71-3BE0-4BCB-A053-AFE9596A8F72}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="PDC_FullFileName">
+              <DTS:VariableValue
+                DTS:DataType="8">FullFileName</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Calculate Utility Arguments"
+              DTS:CreationName="Microsoft.ExpressionTask"
+              DTS:Description="Expression Task"
+              DTS:DTSID="{128587ae-eff8-4d3e-85a3-778574f890b1}"
+              DTS:ExecutableType="Microsoft.ExpressionTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Calculate Utility Arguments"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExpressionTask
+                  Expression="@[User::UtilityArguments] =  @[$Project::UtilityFtpFileMoveArguments] + &quot; -s &quot; + &quot;\&quot;&quot; + REPLACE(@[$Project::UXShareFromSAP], @[$Project::UXShareToBeReplaced], &quot;..&quot;) + &quot;/&quot; + @[User::PDC_FileName] + &quot;\&quot;&quot; + &quot; -t &quot; + &quot;\&quot;&quot; +  REPLACE(@[$Project::UXShareFromSAP], @[$Project::UXShareToBeReplaced], &quot;..&quot;) + &quot;/&quot; + REPLACE(@[User::PDC_FileName], &quot;.TMP&quot;, &quot;.TXT&quot;) + &quot;\&quot;&quot;" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Convert TimeStamp to String"
+              DTS:CreationName="Microsoft.ExpressionTask"
+              DTS:Description="Expression Task"
+              DTS:DTSID="{97C2511B-FA2A-4BA9-BC2B-61130D053877}"
+              DTS:ExecutableType="Microsoft.ExpressionTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Convert TimeStamp to String"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExpressionTask
+                  Expression="@[User::H01_RecTimeStamp] = (DT_WSTR, 4)DATEPART(&quot;year&quot;,@[User::H01_RecTimeStamp_DateTime]) + (DT_WSTR, 2)RIGHT( &quot;00&quot;+(DT_WSTR, 2) DATEPART(&quot;month&quot;,@[User::H01_RecTimeStamp_DateTime]),2) + (DT_WSTR, 2)RIGHT( &quot;00&quot;+(DT_WSTR, 2) DATEPART(&quot;day&quot;,@[User::H01_RecTimeStamp_DateTime]),2) + (DT_WSTR, 2)RIGHT( &quot;00&quot;+(DT_WSTR, 2) DATEPART(&quot;hour&quot;,@[User::H01_RecTimeStamp_DateTime]),2) + (DT_WSTR, 2)RIGHT( &quot;00&quot;+(DT_WSTR, 2) DATEPART(&quot;minute&quot;,@[User::H01_RecTimeStamp_DateTime]),2) + (DT_WSTR, 2)RIGHT( &quot;00&quot;+(DT_WSTR, 2) DATEPART(&quot;second&quot;,@[User::H01_RecTimeStamp_DateTime]),2)" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Create Header 01"
+              DTS:CreationName="Microsoft.ExpressionTask"
+              DTS:Description="Expression Task"
+              DTS:DTSID="{FDDC6C2F-21B1-4B10-9A61-AF43A1F70EE3}"
+              DTS:ExecutableType="Microsoft.ExpressionTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Header 01"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExpressionTask
+                  Expression="@[User::Header01] = &quot;01&quot; +  LEFT(@[User::H01_ProductionOrderNo] + REPLICATE(&quot; &quot;,8),8) + LEFT(@[User::H01_TecoMark] + &quot; &quot;,1) + LEFT(@[User::H01_RecTimeStamp] + REPLICATE(&quot; &quot;,14),14) + &quot;\n&quot;" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Create PDC File"
+              DTS:CreationName="Microsoft.ScriptTask"
+              DTS:Description="Script Task"
+              DTS:DTSID="{12756625-B89A-4997-AFDE-026C01AB8E2A}"
+              DTS:ExecutableType="Microsoft.ScriptTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create PDC File"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ScriptProject
+                  Name="ST_f39966510d6944ccafd5b76386030e78"
+                  VSTAMajorVersion="3"
+                  VSTAMinorVersion="0"
+                  Language="CSharp"
+                  ReadOnlyVariables="User::DocNum,User::Header01,$Package::FH21_Prefix,$Project::WinShareToPDC"
+                  ReadWriteVariables="User::PDC_FileName,User::PDC_FullFileName">
+                  <ProjectItem
+                    Name="Properties\AssemblyInfo.cs"
+                    Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_f39966510d6944ccafd5b76386030e78")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_f39966510d6944ccafd5b76386030e78")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                  <ProjectItem
+                    Name="Properties\Resources.resx"
+                    Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+                  <ProjectItem
+                    Name="ST_f39966510d6944ccafd5b76386030e78.csproj"
+                    Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{06bc5744-4278-4857-b6c5-6a04b988cb1a}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_f39966510d6944ccafd5b76386030e78</RootNamespace>
+    <AssemblyName>ST_f39966510d6944ccafd5b76386030e78</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST120</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+                  <ProjectItem
+                    Name="ScriptMain.cs"
+                    Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+
+using System.Text;
+#endregion
+
+namespace ST_f39966510d6944ccafd5b76386030e78
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // TODO: Add your code here
+
+            string fullFilePath = "";
+            string rowContent = "";
+
+            fullFilePath = (string)Dts.Variables["$Project::WinShareToPDC"].Value + "\\" + (string)Dts.Variables["$Package::FH21_Prefix"].Value + (string)Dts.Variables["User::DocNum"].Value + ".TMP";
+            rowContent =
+                    (string)Dts.Variables["User::Header01"].Value;
+
+            System.IO.File.WriteAllText(fullFilePath, rowContent, Encoding.Default);
+
+            Dts.Variables["User::PDC_FullFileName"].Value = fullFilePath;
+            Dts.Variables["User::PDC_FileName"].Value = (string)Dts.Variables["$Package::FH21_Prefix"].Value + (string)Dts.Variables["User::DocNum"].Value + ".TMP";
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+                  <ProjectItem
+                    Name="Project"
+                    Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_f39966510d6944ccafd5b76386030e78</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_f39966510d6944ccafd5b76386030e78</msb:DisplayName>
+		<msb:ProjectId>{027E906D-2ACD-4EAF-BC27-241129806997}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_f39966510d6944ccafd5b76386030e78.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+                  <ProjectItem
+                    Name="Properties\Settings.Designer.cs"
+                    Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f39966510d6944ccafd5b76386030e78.Properties.Settings.get_Default():ST_f39966510d6944ccafd5b76386030e78.Properties.Sett" +
+    "ings")]
+
+namespace ST_f39966510d6944ccafd5b76386030e78.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+                  <ProjectItem
+                    Name="Properties\Settings.settings"
+                    Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+                  <ProjectItem
+                    Name="Properties\Resources.Designer.cs"
+                    Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f39966510d6944ccafd5b76386030e78.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f39966510d6944ccafd5b76386030e78.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f39966510d6944ccafd5b76386030e78.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_f39966510d6944ccafd5b76386030e78.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_f39966510d6944ccafd5b76386030e78.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+                  <BinaryItem
+                    Name="ST_f39966510d6944ccafd5b76386030e78.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAIlXvloAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAA/i8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKwvAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAABBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADg
+LwAAAAAAAEgAAAACAAUACCIAAOwMAAABAAAAAAAAAPQuAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBQBEAQAAAQAAEXIBAABwCnIBAABwCxuNGAAAASUWAigQ
+AAAKbxEAAApyAwAAcG8SAAAKbxMAAAp0GAAAAaIlF3IzAABwoiUYAigQAAAKbxEAAApyNwAAcG8S
+AAAKbxMAAAp0GAAAAaIlGQIoEAAACm8RAAAKcmMAAHBvEgAACm8TAAAKdBgAAAGiJRpyfQAAcKIo
+FAAACgoCKBAAAApvEQAACnKHAABwbxIAAApvEwAACnQYAAABCwYHKBUAAAooFgAACgIoEAAACm8R
+AAAKcqUAAHBvEgAACgZvFwAACgIoEAAACm8RAAAKctMAAHBvEgAACgIoEAAACm8RAAAKcjcAAHBv
+EgAACm8TAAAKdBgAAAECKBAAAApvEQAACnJjAABwbxIAAApvEwAACnQYAAABcn0AAHAoGAAACm8X
+AAAKAigQAAAKFm8ZAAAKKh4CKBoAAAoqHgIoGwAACiqufgEAAAQtHnL5AABw0AMAAAIoHAAACm8d
+AAAKcx4AAAqAAQAABH4BAAAEKhp+AgAABCoeAoACAAAEKhp+AwAABCoeAigfAAAKKi5zCAAABoAD
+AAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA6AMAACN+AABUBAAAnAUA
+ACNTdHJpbmdzAAAAAPAJAABsAQAAI1VTAFwLAAAQAAAAI0dVSUQAAABsCwAAgAEAACNCbG9iAAAA
+AAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAAAQAAACAAAAAFAAAABgAAAAkAAAABAAAAHwAAAAIAAAAQ
+AAAAAQAAAAIAAAADAAAABAAAAAEAAAAEAAAAAQAAAAEAAAAAAJUDAQAAAAAABgA0AmUEBgDDAmUE
+BgCAAVIEDwDZBAAABgCtARMEBgAXAhMEBgD4ARMEBgCqAhMEBgBUAhMEBgBtAhMEBgDEARMEBgDf
+AQQDCgCIAkQDCgD/AEQDBgDNA8YDBgBjAVIEBgBTBcYDBgA1BIUEBgAlBP4DDgAzAX8DDgCUAX8D
+DgAbAekDBgBIAWUEBgAeA8YDCgBtA0QDEgAbBaoAEgB4AKoABgD7AnUFBgClAC4ABgDKAMYDBgCB
+AMYDBgCSBRMEAAAAACUAAAAAAAEAAQABABAA3gMBADkAAQABAAAAEACMBOgERQABAAMAAAEQACUF
+6ARZAAMABwADAQAAPgUAAD0ABAAKABEA0gOEABEA7wCIABEAaACMAAYGVwCQAFaALgWTAFaAzwCT
+AFAgAAAAAIYA5AMGAAEAoCEAAAAAhhhFBAYAAQCoIQAAAACDGEUEBgABALAhAAAAAJMIMQSXAAEA
+3CEAAAAAkwjXAJwAAQDjIQAAAACTCOMAoQABAOshAAAAAJYIWgWnAAIA8iEAAAAAhhhFBAYAAgD6
+IQAAAACRGEsErAACAAAAAQD1AgkARQQBABEARQQGABkARQQKACkARQQQADEARQQQADkARQQQAEEA
+RQQQAEkARQQQAFEARQQQAFkARQQQAGEARQQQAGkARQQGAIEARQQGAKkARQQVALkARQQGAHEANgUg
+AMkAFwUlANEAvQMqANkA4QIwAMEATAU0AOEAWgU6AOkAgQU/ANkA6wJHAMEATAVMAMkAZgUBAHEA
+RQQGAIkARQQGAPEAkwBTAPEAjgVaAJEARQRgALEARQQGAAgAFAB6AAgAGAB/ACkAcwDnAC4ACwC/
+AC4AEwDIAC4AGwDnAC4AIwDwAC4AKwAZAS4AMwAZAS4AOwAZAS4AQwDwAC4ASwAfAS4AUwAZAS4A
+WwA2AUMAYwB/AEkAcwDnAGEAewB/AGMAawB/ABsAAwABAAQAAwAAADUEsAAAAPcAtQAAAF4FugAC
+AAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAAAAca1HoAAAAAAAABAAAABAAAAAAAAAAAAAAA
+aABfAAAAAAAMAAAAAAAAAAAAAABxACUDAAAAAAQAAAAAAAAAAAAAAGgAxgMAAAAADAAAAAAAAAAA
+AAAAcQA4AAAAAAAAAAAAAQAAAJYEAAAFAAIAAAAAAABTVF9mMzk5NjY1MTBkNjk0NGNjYWZkNWI3
+NjM4NjAzMGU3OAA8TW9kdWxlPgBTeXN0ZW0uSU8ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2Vk
+RFRTAHZhbHVlX18AbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAFZhcmlhYmxlAFJ1bnRpbWVUeXBl
+SGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAEZpbGUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVu
+dGltZQBUeXBlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJl
+AFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0
+b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVz
+ZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmli
+dXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFy
+Z2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3Nl
+bWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUA
+QXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNT
+Y3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVu
+dGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAZ2V0X1ZhbHVlAHNldF9WYWx1ZQB2YWx1ZQBFbmNv
+ZGluZwBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFN0cmluZwBNaWNyb3NvZnQuU3FsU2VydmVy
+LlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBTY3Jp
+cHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfZjM5OTY2NTEwZDY5NDRjY2Fm
+ZDViNzYzODYwMzBlNzguZGxsAGdldF9JdGVtAFN5c3RlbQBFbnVtAHJlc291cmNlTWFuAFNjcmlw
+dE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJl
+ZmxlY3Rpb24AQ3VsdHVyZUluZm8AZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lz
+dGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJl
+c291cmNlcwBTVF9mMzk5NjY1MTBkNjk0NGNjYWZkNWI3NjM4NjAzMGU3OC5Qcm9wZXJ0aWVzLlJl
+c291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfZjM5OTY2NTEwZDY5NDRjY2FmZDVi
+NzYzODYwMzBlNzguUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAFN1Y2Nlc3MAZ2V0
+X0R0cwBTY3JpcHRSZXN1bHRzAENvbmNhdABPYmplY3QAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tSZXN1
+bHQAU3lzdGVtLlRleHQAV3JpdGVBbGxUZXh0AGdldF9Bc3NlbWJseQAAAAEALyQAUAByAG8AagBl
+AGMAdAA6ADoAVwBpAG4AUwBoAGEAcgBlAFQAbwBQAEQAQwAAA1wAACskAFAAYQBjAGsAYQBnAGUA
+OgA6AEYASAAyADEAXwBQAHIAZQBmAGkAeAAAGVUAcwBlAHIAOgA6AEQAbwBjAE4AdQBtAAAJLgBU
+AE0AUAAAHVUAcwBlAHIAOgA6AEgAZQBhAGQAZQByADAAMQAALVUAcwBlAHIAOgA6AFAARABDAF8A
+RgB1AGwAbABGAGkAbABlAE4AYQBtAGUAACVVAHMAZQByADoAOgBQAEQAQwBfAEYAaQBsAGUATgBh
+AG0AZQAAcVMAVABfAGYAMwA5ADkANgA2ADUAMQAwAGQANgA5ADQANABjAGMAYQBmAGQANQBiADcA
+NgAzADgANgAwADMAMABlADcAOAAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBj
+AGUAcwAAAGwPwLHA64pNrvgSYDQpbMwABCABAQgDIAABBSABARERBCABAQ4FIAEBEVEEBwIODgQg
+ABJlBCAAEmkFIAESbRwDIAAcBQABDh0OBAAAEnEHAAMBDg4ScQQgAQEcBgADDg4ODgYAARJ5EX0F
+IAASgIEHIAIBDhKAgQi3elxWGTTgiQiJhF3NgIDMkQQAAAAABAEAAAADBhJJAwYSTQMGEhACBggD
+BhEUBAAAEkkEAAASTQUAAQESTQQAABIQAwAAAQQIABJJBAgAEk0ECAASEAgBAAgAAAAAAB4BAAEA
+VAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfZjM5OTY2NTEwZDY5NDRj
+Y2FmZDViNzYzODYwMzBlNzgAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAxNwAARwEAGi5ORVRG
+cmFtZXdvcmssVmVyc2lvbj12NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1l
+d29yayA0AAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIs
+IG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9r
+ZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIA
+AAAAAAAAAAAAAFBBRFBBRFC0AAAA1C8AAAAAAAAAAAAA7i8AAAAgAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAOAvAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABANR6BxoAAAEA1HoHGj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8AZgAzADkAOQA2ADYANQAxADAAZAA2ADkANAA0AGMAYwBhAGYAZAA1AGIANwA2ADMA
+OAA2ADAAMwAwAGUANwA4AAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADYANgA2ADMALgAzADEANAA0ADQAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8AZgAzADkAOQA2ADYANQAxADAAZAA2ADkANAA0AGMAYwBhAGYAZAA1AGIANwA2ADMAOAA2
+ADAAMwAwAGUANwA4AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAxADcAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwBmADMAOQA5ADYANgA1ADEAMABkADYAOQA0ADQAYwBjAGEAZgBkADUAYgA3
+ADYAMwA4ADYAMAAzADAAZQA3ADgALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8AZgAzADkAOQA2ADYANQAxADAAZAA2ADkANAA0AGMAYwBhAGYAZAA1AGIANwA2
+ADMAOAA2ADAAMwAwAGUANwA4AAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA2ADYANgAzAC4AMwAxADQANAA0AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA2ADYANgAzAC4AMwAxADQANAA0AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAAAwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+                </ScriptProject>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Delete PDC File"
+              DTS:CreationName="Microsoft.FileSystemTask"
+              DTS:Description="Delete PDC file from Windows Share"
+              DTS:DTSID="{8BBE304A-EC45-4189-AC5C-2B84CE3A4BF5}"
+              DTS:ExecutableType="Microsoft.FileSystemTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Delete PDC File"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <FileSystemData
+                  TaskOperationType="DeleteFile"
+                  TaskSourcePath="User::PDC_FullFileName"
+                  TaskIsSourceVariable="True" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Mark Production Order (S)"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Mark Production Order preccessed"
+              DTS:DTSID="{EED7F107-C46F-44D4-8926-C4555470E871}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Mark Production Order (S)"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{14A93FFC-E861-4FD6-8DD4-8C7D08998C9D}"
+                  SQLTask:SqlStatementSource="EXECUTE [dbo].[sp_PO_UpdateStatus] ?, N'S', ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::DocNum"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::ErrorNo"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="3"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="User::ErrorText"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Rename Files on FTP"
+              DTS:CreationName="Microsoft.ExecuteProcess"
+              DTS:Description="Rename TMP files files to TXT via FTP"
+              DTS:DTSID="{9e4c36bc-f72f-4969-8200-5379249beb37}"
+              DTS:ExecutableType="Microsoft.ExecuteProcess"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Rename Files on FTP"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="Arguments">@[User::UtilityArguments]</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="Executable">@[$Project::UtilityFtpFileMove]</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="WorkingDirectory">@[$Project::UtilityFtpFileMoveWorkingDirectory]</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <ExecuteProcessData
+                  Executable="\\DEFLN03FI02\mfg\PDC-FTP\Utilities\FtpFileMove\FtpFileMove.exe"
+                  WorkingDirectory="\\DEFLN03FI02\mfg\PDC-FTP\Utilities\FtpFileMove"
+                  WindowStyle="Hidden" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\PDC-FH21\Production Order Loop\Send PDC File via FTP"
+              DTS:CreationName="Microsoft.FtpTask"
+              DTS:Description="Send PDC file by FTO to the destination"
+              DTS:DTSID="{5E6AE4E9-865F-4BEE-962E-FFC55EAE6EC8}"
+              DTS:ExecutableType="Microsoft.FtpTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send PDC File via FTP"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <FtpData
+                  ConnectionName="{41E838DD-BE86-404F-83AE-9DB84953AC2C}"
+                  StopOnFailure="False"
+                  TaskIsLocalPathVar="True"
+                  TaskLocalPath="User::PDC_FullFileName"
+                  TaskIsRemotePathVar="True"
+                  TaskRemotePath="$Project::UXShareFromSAP"
+                  TaskOverwriteDest="True" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{C46A005C-8CDD-46BB-9792-2F4D3FF74FFF}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Convert TimeStamp to String"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Create Header 01" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{D8BD69F1-A419-4AD7-BBA9-8A3FBAE5F36A}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Create Header 01"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Create PDC File" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:DTSID="{BE7FE431-E652-4FDE-9078-85B5B3E7EE30}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Create PDC File"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Send PDC File via FTP" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 3]"
+              DTS:CreationName=""
+              DTS:DTSID="{A51B88C2-ED2D-4254-A8EE-9A83EDF99EF7}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Send PDC File via FTP"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 3"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Calculate Utility Arguments" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 4]"
+              DTS:CreationName=""
+              DTS:DTSID="{A1E68ED8-C050-424E-9EBF-2DC19C077C10}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Delete PDC File"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 4"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Mark Production Order (S)" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 5]"
+              DTS:CreationName=""
+              DTS:DTSID="{F8A4A35A-8929-442A-8B0E-324611169FB2}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Calculate Utility Arguments"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 5"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Rename Files on FTP" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 6]"
+              DTS:CreationName=""
+              DTS:DTSID="{40D3FEDF-046C-471F-9AD2-1456CEB30182}"
+              DTS:From="Package\PDC-FH21\Production Order Loop\Rename Files on FTP"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 6"
+              DTS:To="Package\PDC-FH21\Production Order Loop\Delete PDC File" />
+          </DTS:PrecedenceConstraints>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{2C063231-7318-482D-9390-DE80E92FE1CD}"
+              DTS:ObjectName="{2C063231-7318-482D-9390-DE80E92FE1CD}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::DocNum" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{493EF098-DA72-42F3-B247-8D70C837038C}"
+              DTS:ObjectName="{493EF098-DA72-42F3-B247-8D70C837038C}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::H01_ProductionOrderNo" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B10BDD8D-6565-4878-964E-3EF2EB1399D3}"
+              DTS:ObjectName="{B10BDD8D-6565-4878-964E-3EF2EB1399D3}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::H01_TecoMark" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{B9231BC6-449A-4CBF-ACAF-BE149CDF1B31}"
+              DTS:ObjectName="{B9231BC6-449A-4CBF-ACAF-BE149CDF1B31}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::H01_RecTimeStamp_DateTime" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PDC-FH21\Read TECO Production Order from MES"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Read TECO production orders comming from SAP and belongs to PDC"
+          DTS:DTSID="{56127658-0CE2-46A2-A72C-88C31EEDF411}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Read TECO Production Order from MES"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{14A93FFC-E861-4FD6-8DD4-8C7D08998C9D}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[sp_PDC_FH21_Read_TECO]"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::ProductionOrder" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PDC-FH21.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{116E9A4A-5761-40F0-BF4A-624D7F9C5019}"
+          DTS:From="Package\PDC-FH21\Read TECO Production Order from MES"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\PDC-FH21\Production Order Loop" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail If Error"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail with error description"
+      DTS:DTSID="{de25a421-f0ca-4644-bda5-5d7098395111}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail If Error"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="ToLine">@[$Project::Recipients]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{C4473161-2A7F-49DD-9CAF-ABBB360179DC}"
+          SendMailTask:From="SSIS_DEFFLN03DB01@danfoss.com"
+          SendMailTask:To="rknoll@danfoss.com"
+          SendMailTask:Subject="SSIS PDC-FH21"
+          SendMailTask:Priority="High"
+          SendMailTask:MessageSource="The SSIS package PDC-FH21 failed." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5F422645-06C6-4923-B996-91646B4FC621}"
+      DTS:From="Package\PDC-FH21"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Mail If Error"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Calculate Utility Arguments"
+          TopLeft="18.8571435188761,306.467232357295" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Convert TimeStamp to String"
+          TopLeft="18.8571435188761,17.3647080444547" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Create Header 01"
+          TopLeft="18.8571435188761,89.6403391226647" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Create PDC File"
+          TopLeft="18.8571435188761,161.915970200875" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Delete PDC File"
+          TopLeft="18.8571435188761,451.018494513715" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Mark Production Order (S)"
+          TopLeft="18.8571435188761,523.294125591925" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Rename Files on FTP"
+          TopLeft="18.8571435188761,378.742863435505" />
+        <NodeLayout
+          Size="244.8,41.6"
+          Id="Package\PDC-FH21\Production Order Loop\Send PDC File via FTP"
+          TopLeft="18.8571435188761,234.191601279085" />
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint]"
+          TopLeft="141.257143518876,58.9647080444547">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.67563107821"
+              Start="0,0"
+              End="0,23.17563107821">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.17563107821" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 1]"
+          TopLeft="141.257143518876,131.240339122665">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.67563107821"
+              Start="0,0"
+              End="0,23.17563107821">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.17563107821" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 2]"
+          TopLeft="141.257143518876,203.515970200875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.67563107821"
+              Start="0,0"
+              End="0,23.17563107821">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.17563107821" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 3]"
+          TopLeft="141.257143518876,275.791601279085">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6756310782101"
+              Start="0,0"
+              End="0,23.1756310782101">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1756310782101" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 4]"
+          TopLeft="141.257143518876,492.618494513715">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6756310782101"
+              Start="0,0"
+              End="0,23.1756310782101">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1756310782101" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 5]"
+          TopLeft="141.257143518876,348.067232357295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6756310782101"
+              Start="0,0"
+              End="0,23.1756310782101">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1756310782101" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PDC-FH21\Production Order Loop.PrecedenceConstraints[Constraint 6]"
+          TopLeft="141.257143518876,420.342863435505">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6756310782101"
+              Start="0,0"
+              End="0,23.1756310782101">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1756310782101" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,582.4"
+          Size="280,624.8"
+          Id="Package\PDC-FH21\Production Order Loop"
+          TopLeft="16.3428703775215,91.7647084820228" />
+        <NodeLayout
+          Size="280,41.6"
+          Id="Package\PDC-FH21\Read TECO Production Order from MES"
+          TopLeft="16.3428703775215,14.0705897453335" />
+        <EdgeLayout
+          Id="Package\PDC-FH21.PrecedenceConstraints[Constraint]"
+          TopLeft="156.342870377522,55.6705897453335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.0941187366893"
+              Start="0,0"
+              End="0,28.5941187366893">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5941187366893" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="315.2,771.2"
+          Size="315.2,814.4"
+          Id="Package\PDC-FH21"
+          TopLeft="77.5238186777862,31.1843135681943" />
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\Send Mail If Error"
+          TopLeft="456.571436346794,31.1843135681943" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="392.723818677786,438.384313568194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.8476176690076,-386.4"
+              Start="0,0"
+              End="56.3476176690076,-386.4">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.9238088345038,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.9238088345038,0"
+                    Point2="31.9238088345038,0"
+                    Point3="31.9238088345038,-4" />
+                  <mssgle:LineSegment
+                    End="31.9238088345038,-382.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.9238088345038,-382.4"
+                    Point2="31.9238088345038,-386.4"
+                    Point3="35.9238088345038,-386.4" />
+                  <mssgle:LineSegment
+                    End="56.3476176690076,-386.4" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="16.6824611782538,1,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

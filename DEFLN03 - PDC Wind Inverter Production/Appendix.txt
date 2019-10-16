@@ -1,0 +1,95 @@
+It is a DFS share and should be mapped by using the X drive letter.
+
+\\danfoss.net\files\MFG\PE\DEPE
+
+Folder is called PDF-FTP
+
+The direct path is
+\\defln03fi02\mfg
+
+System account S124852
+password is 8KexQpM3TcNeggXjK
+
+
+FTP Cponnection
+---------------
+Test environment on PDC
+Server\Folder: wd0234
+Username: tsap2flb
+Password: data2pdc
+Destination folder: from_sap (please change to this folder and store datafile)
+Source folder: to_sap (please change to this folder, where reading data from PDC)
+
+Productive environment on PDC
+Server\Folder: wd0234
+Username: psap2flb
+Password: data2pdc
+Destination folder: from_sap (please change to this folder and store datafile)
+Source folder: to_sap (please change to this folder, where reading data from PDC)
+
+
+SQL logins are:
+---------------
+ErpToMfgP with pasword 90vG9GAJrKHChWccI for ErpToMfgP
+and 
+ErpToMfgQ with password wIFEQKIiQf7R8Cx68 for ErpToMfgQ 
+
+and for SSIS:
+DEFLN03db01\SQLHotel
+	Name: PDCProd_MESI
+	Password: ZLkcFWdAFG6VTuuv5
+and
+DEFLN03db01\SQLHotel
+	Name: PDCTest_MESI
+	Password: HVQJMt8pqKSEsEu7s
+
+
+Released production orders in ErpToMfgQ database:  
+PRODORDER
+	[dbo].[PO_PRODORDER].[STATUS] = N'R' 
+	[dbo].[PO_PRODORDER].[SYSID] = N'A301MES02'
+	[dbo].[PO_PRODORDER_STAT].[STAT] = 'I0045'
+
+
+
+ -- FH26
+--UPDATE [ErpToMfgInFlsQ].[dbo].[PO_PRODORDER] 
+--	SET [STATUS] = 'R'
+--	WHERE AUFNR = '10000855' AND [SYSID] = N'A301MES02'
+
+SELECT 
+	p.AUFNR, p.[DOCNUM], p.[STATUS], p.[SYSID], s.[STAT]
+FROM 
+	[ErpToMfgInFlsQ].[dbo].[PO_PRODORDER] AS p 
+	INNER JOIN [ErpToMfgInFlsQ].[dbo].[PO_PRODORDER_STAT] s ON p.[DOCNUM] = s.[DOCNUM]
+WHERE
+	p.[SYSID] = N'A301MES02' AND s.[STAT] = N'I0002'
+
+
+/* for SQK ----------------------------------------------------------------------------*/
+-- FH21
+--UPDATE [ErpToMfgInFlsQ].[dbo].[PO_PRODORDER]
+--	SET [STATUS] = 'R'
+--	WHERE [SYSID] = N'A301MES02' AND AUFNR = '10000832'
+
+SELECT p.[DOCNUM],p.[AUFNR], p.[STATUS], s.[STAT]
+FROM
+	[ErpToMfgInFlsQ].[dbo].[PO_PRODORDER] AS p JOIN
+	[ErpToMfgInFlsQ].[dbo].[PO_PRODORDER_STAT] AS s ON p.DOCNUM = s.DOCNUM
+WHERE
+	p.[SYSID] = N'A301MES02'
+	AND s.[STAT] = 'I0045'
+
+
+-- FH27
+--DELETE FROM [MfgInFlsQLocalization].[dbo].[tbl_tmp_FH27]
+
+SELECT *
+  FROM [MfgInFlsQLocalization].[dbo].[tbl_tmp_FH27]
+
+
+--FH28
+--DELETE FROM [MfgInFlsQLocalization].[dbo].[tbl_tmp_FH28]
+
+SELECT *
+  FROM [MfgInFlsQLocalization].[dbo].[tbl_tmp_FH28]
